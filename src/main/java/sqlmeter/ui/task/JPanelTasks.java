@@ -48,12 +48,13 @@ public class JPanelTasks extends javax.swing.JPanel {
 		}
 	}
 
-	private synchronized void makeModel(final List<Task> tasks) {
+	private void makeModel(final List<Task> tasks) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				TableModelTasks model = new TableModelTasks(tasks);
 				table.setModel(model);
+				model.fireTableDataChanged();
 			}
 		});
 	}

@@ -37,12 +37,13 @@ public class JPanelSchedules extends javax.swing.JPanel {
 		swk.execute();
 	}
 
-	public synchronized void makeModel(final List<Schedule> schedules) {
+	public void makeModel(final List<Schedule> schedules) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				TableModelSchedules model = new TableModelSchedules(schedules);
 				table.setModel(model);
+				model.fireTableDataChanged();
 			}
 		});
 	}
