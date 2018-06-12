@@ -15,7 +15,7 @@ import sqlmeter.ui.task.JPanelTasks;
  * @author Leonid Ivanov
  */
 public class StartJFrame extends javax.swing.JFrame {	
-	private static final long serialVersionUID = -6273423183064961818L;
+	private static final long serialVersionUID = 1L;
 	
 	private JTabbedPane jTabbedPane1;
 

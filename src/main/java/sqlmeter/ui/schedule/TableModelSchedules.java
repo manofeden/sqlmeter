@@ -11,7 +11,7 @@ import sqlmeter.model.Schedule;
  */
 public class TableModelSchedules extends AbstractTableModel{
     
-	private static final long serialVersionUID = -3281914458240769224L;
+	private static final long serialVersionUID = 1L;
 	
 	private List<Schedule> schedules;
     

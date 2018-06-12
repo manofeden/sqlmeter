@@ -8,6 +8,7 @@ import java.util.UUID;
  * @author Leonid Ivanov
  */
 public class Task {
+	
     String task_ID;
     String task_Name;
     String task_SQL;

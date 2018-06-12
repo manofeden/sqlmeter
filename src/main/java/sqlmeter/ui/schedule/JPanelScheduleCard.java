@@ -27,8 +27,7 @@ import sqlmeter.ui.APanelCard;
  * @author Leonid Ivanov
  */
 public class JPanelScheduleCard extends APanelCard {
-
-	private static final long serialVersionUID = -2018189842377748078L;
+	private static final long serialVersionUID = 1L;
 
 	private JButton jButton1, jButton2;
 	private JLabel jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel_ID;

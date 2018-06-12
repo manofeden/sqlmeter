@@ -19,7 +19,7 @@ import sqlmeter.model.Task;
  */
 public class JPanelTasks extends javax.swing.JPanel {
 	
-	private static final long serialVersionUID = 8876174632291144027L;
+	private static final long serialVersionUID = 1L;
 	
 	private JButton jButton1, jButton2, jButton3;	
 	private JScrollPane jScrollPane1;
