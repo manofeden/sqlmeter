@@ -10,8 +10,10 @@ import sqlmeter.model.Task;
  * @author Leonid Ivanov
  */
 public class TableModelTasks extends AbstractTableModel{
-    
-    private List<Task> tasks;
+   
+	private static final long serialVersionUID = -6562999098783896560L;
+	
+	private List<Task> tasks;
     
     public TableModelTasks() {
         this.tasks = new ArrayList<Task>();

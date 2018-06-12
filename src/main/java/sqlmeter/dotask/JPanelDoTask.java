@@ -21,6 +21,8 @@ import sqlmeter.ui.schedule.SWk_TaskShow;
  */
 public class JPanelDoTask extends JPanel {
 
+	private static final long serialVersionUID = 7995528626678507419L;
+	
 	private JDialog dialog;
 	private volatile boolean isFinish;
 

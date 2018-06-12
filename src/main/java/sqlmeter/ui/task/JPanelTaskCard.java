@@ -20,6 +20,8 @@ import sqlmeter.ui.APanelCard;
  */
 public class JPanelTaskCard extends APanelCard {
 
+	private static final long serialVersionUID = -3258685342200679057L;
+	
 	private JButton jButton1;
 	private JButton jButton2;
 	private JLabel jLabel1;

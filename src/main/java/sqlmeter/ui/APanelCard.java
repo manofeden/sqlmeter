@@ -8,7 +8,9 @@ import javax.swing.JDialog;
  */
 public class APanelCard extends javax.swing.JPanel {
 
-    public JDialog dialog;
+	private static final long serialVersionUID = -5658083484781900452L;
+	
+	public JDialog dialog;
     public boolean isUpdate;
 
     public APanelCard() {

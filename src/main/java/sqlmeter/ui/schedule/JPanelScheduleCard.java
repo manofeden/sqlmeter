@@ -27,9 +27,12 @@ import sqlmeter.ui.APanelCard;
  * @author Leonid Ivanov
  */
 public class JPanelScheduleCard extends APanelCard {
+	
+	private static final long serialVersionUID = -2018189842377748078L;
+	
 	private JButton jButton1;
 	private JButton jButton2;
-	private JComboBox<String> jComboBox_task_ID;
+	private JComboBox<TaskShow> jComboBox_task_ID;
 	private JFormattedTextField jFormattedTextField_StartTime;
 	private JLabel jLabel1;
 	private JLabel jLabel2;
@@ -75,7 +78,8 @@ public class JPanelScheduleCard extends APanelCard {
 					}
 				}
 
-				jComboBox_task_ID.setModel(new DefaultComboBoxModel(taskshow));
+				DefaultComboBoxModel<TaskShow> defaultComboBoxModel = new DefaultComboBoxModel<TaskShow>(taskshow);
+				jComboBox_task_ID.setModel(defaultComboBoxModel);
 				jComboBox_task_ID.setSelectedIndex(selected_combo_ix);
 			}
 		});

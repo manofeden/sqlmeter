@@ -22,6 +22,9 @@ import sqlmeter.model.Task;
  * @author Leonid Ivanov
  */
 public class JPanelSchedules extends javax.swing.JPanel {
+	
+	private static final long serialVersionUID = -921742554086763891L;
+	
 	private JButton jButton1, jButton2, jButton3, jButton4;	
 	private JScrollPane jScrollPane1;
 	private JTable table;
@@ -134,6 +137,7 @@ public class JPanelSchedules extends javax.swing.JPanel {
 	}
 
 	private class RefreshAction extends AbstractAction {
+		private static final long serialVersionUID = 5253039020949386737L;
 
 		@Override
 		public void actionPerformed(ActionEvent event) {
