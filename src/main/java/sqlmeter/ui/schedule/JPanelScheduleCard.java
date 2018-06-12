@@ -27,19 +27,13 @@ import sqlmeter.ui.APanelCard;
  * @author Leonid Ivanov
  */
 public class JPanelScheduleCard extends APanelCard {
-	
+
 	private static final long serialVersionUID = -2018189842377748078L;
-	
-	private JButton jButton1;
-	private JButton jButton2;
+
+	private JButton jButton1, jButton2;
+	private JLabel jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel_ID;
 	private JComboBox<TaskShow> jComboBox_task_ID;
 	private JFormattedTextField jFormattedTextField_StartTime;
-	private JLabel jLabel1;
-	private JLabel jLabel2;
-	private JLabel jLabel3;
-	private JLabel jLabel4;
-	private JLabel jLabel5;
-	private JLabel jLabel_ID;
 	private JScrollPane jScrollPane1;
 	private JTextArea jTextArea_Params;
 	private JTextField jTextField_Name;
