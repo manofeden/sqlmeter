@@ -14,9 +14,9 @@ import sqlmeter.ui.task.JPanelTasks;
 /**
  * @author Leonid Ivanov
  */
-public class StartJFrame extends javax.swing.JFrame {	
+public class StartJFrame extends javax.swing.JFrame {
 	private static final long serialVersionUID = 1L;
-	
+
 	private JTabbedPane jTabbedPane1;
 
 	public StartJFrame() {
@@ -31,7 +31,7 @@ public class StartJFrame extends javax.swing.JFrame {
 
 		this.setSize(800, 500);
 		this.setLocationRelativeTo(null);
-		this.setTitle("***********");
+		this.setTitle("*** sqlmeter ***");
 
 		setVisible(true);
 	}
@@ -44,8 +44,7 @@ public class StartJFrame extends javax.swing.JFrame {
 					break;
 				}
 			}
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-				| javax.swing.UnsupportedLookAndFeelException ex) {
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
 			Logger.getLogger(StartJFrame.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
@@ -57,10 +56,8 @@ public class StartJFrame extends javax.swing.JFrame {
 
 		GroupLayout layout = new GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(
-				layout.createSequentialGroup().addContainerGap().addComponent(jTabbedPane1).addContainerGap()));
-		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(
-				layout.createSequentialGroup().addContainerGap().addComponent(jTabbedPane1).addContainerGap()));
+		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addComponent(jTabbedPane1).addContainerGap()));
+		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addComponent(jTabbedPane1).addContainerGap()));
 
 		pack();
 	}

@@ -42,10 +42,10 @@ public class Parse {
         String nodeName = node.getNodeName();
         System.out.println(nodeName);
         
-        if (nodeName.equals("connection")) {
+        if ("connection".equals(nodeName)) {
             propConnection = new Properties();
             analizConnection(node);
-        } else if (nodeName.equals("orderby")) {           
+        } else if ("orderby".equals(nodeName)) {           
             analizOrderBy(node);
         }        
     } 

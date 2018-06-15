@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -18,6 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.SwingUtilities;
+
 import sqlmeter.SQL;
 import sqlmeter.model.Schedule;
 import sqlmeter.model.Task;
@@ -165,10 +167,10 @@ public class JPanelScheduleCard extends APanelCard {
 		if (sch.getSchd_ID().isEmpty()) {
 			sch.setSchd_ID(UUID.randomUUID().toString());
 			isUpdate = SQL.insertSchedule(sch);
+		} else {
+			// если есть ID то редактируем
+			isUpdate = SQL.updateSchedule(sch);
 		}
-
-		// если есть ID то редактируем
-		isUpdate = SQL.updateSchedule(sch);
 
 		if (isUpdate) {
 			dialog.setVisible(false);
@@ -215,54 +217,27 @@ public class JPanelScheduleCard extends APanelCard {
 			}
 		});
 
-		jFormattedTextField_StartTime.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(
-				new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd H:mm:ss"))));
+		jFormattedTextField_StartTime.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd H:mm:ss"))));
 
 		GroupLayout layout = new GroupLayout(this);
 		this.setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout
-				.createSequentialGroup().addContainerGap()
-				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jTextField_Name)
-						.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-						.addGroup(layout.createSequentialGroup().addComponent(jLabel1)
-								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jLabel_ID,
-										GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addGroup(layout.createSequentialGroup().addComponent(jButton1)
-								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)
-								.addComponent(jButton2))
-						.addComponent(jComboBox_task_ID, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(
-								layout.createSequentialGroup()
-										.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-												.addComponent(jLabel2).addComponent(jLabel3).addComponent(jLabel4)
-												.addComponent(jLabel5))
-										.addGap(0, 0, Short.MAX_VALUE))
-						.addComponent(jFormattedTextField_StartTime))
-				.addContainerGap()));
-		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(layout.createSequentialGroup().addContainerGap()
-						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(jLabel1)
-								.addComponent(jLabel_ID))
-						.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).addComponent(jLabel2)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-						.addComponent(jTextField_Name, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).addComponent(jLabel4)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-						.addComponent(jComboBox_task_ID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).addComponent(jLabel5)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-						.addComponent(jFormattedTextField_StartTime, GroupLayout.PREFERRED_SIZE,
-								GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).addComponent(jLabel3)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-						.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(jButton1)
-								.addComponent(jButton2))
+						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jTextField_Name).addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+								.addGroup(layout.createSequentialGroup().addComponent(jLabel1).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jLabel_ID, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addGroup(layout.createSequentialGroup().addComponent(jButton1).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(jButton2))
+								.addComponent(jComboBox_task_ID, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addGroup(layout.createSequentialGroup()
+										.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jLabel2).addComponent(jLabel3).addComponent(jLabel4).addComponent(jLabel5)).addGap(0, 0, Short.MAX_VALUE))
+								.addComponent(jFormattedTextField_StartTime))
 						.addContainerGap()));
+		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(jLabel1).addComponent(jLabel_ID)).addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+						.addComponent(jLabel2).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jTextField_Name, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).addComponent(jLabel4).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+						.addComponent(jComboBox_task_ID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).addComponent(jLabel5)
+						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jFormattedTextField_StartTime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).addComponent(jLabel3).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(jButton1).addComponent(jButton2)).addContainerGap()));
 	}
 
 }

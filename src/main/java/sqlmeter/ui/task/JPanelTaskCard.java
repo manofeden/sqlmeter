@@ -21,7 +21,7 @@ import sqlmeter.ui.APanelCard;
 public class JPanelTaskCard extends APanelCard {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private JButton jButton1;
 	private JButton jButton2;
 	private JLabel jLabel1;
@@ -64,10 +64,10 @@ public class JPanelTaskCard extends APanelCard {
 		Task task = getData();
 		if (!task.getTask_ID().isEmpty()) {
 			isUpdate = SQL.updateTask(task);
+		} else {
+			task.setTask_ID(UUID.randomUUID().toString());
+			isUpdate = SQL.insertTask(task);
 		}
-
-		task.setTask_ID(UUID.randomUUID().toString());
-		isUpdate = SQL.insertTask(task);
 
 		if (isUpdate)
 			dialog.setVisible(false);
@@ -109,38 +109,18 @@ public class JPanelTaskCard extends APanelCard {
 
 		GroupLayout layout = new GroupLayout(this);
 		this.setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout
-				.createSequentialGroup().addContainerGap()
-				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jTextField_Name)
-						.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-						.addGroup(layout.createSequentialGroup().addComponent(jLabel1)
-								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jLabel_ID,
-										GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addGroup(layout.createSequentialGroup()
-								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-										.addComponent(jLabel2).addComponent(jLabel3))
-								.addGap(0, 0, Short.MAX_VALUE))
-						.addGroup(
-								layout.createSequentialGroup().addComponent(jButton1)
-										.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,
-												GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(jButton2)))
-				.addContainerGap()));
-		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(layout.createSequentialGroup().addContainerGap()
-						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(jLabel1)
-								.addComponent(jLabel_ID))
-						.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).addComponent(jLabel2)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-						.addComponent(jTextField_Name, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addGap(18, 18, 18).addComponent(jLabel3)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-						.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(jButton1)
-								.addComponent(jButton2))
+						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jTextField_Name).addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+								.addGroup(layout.createSequentialGroup().addComponent(jLabel1).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jLabel_ID, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addGroup(layout.createSequentialGroup().addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jLabel2).addComponent(jLabel3)).addGap(0, 0, Short.MAX_VALUE))
+								.addGroup(layout.createSequentialGroup().addComponent(jButton1).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(jButton2)))
 						.addContainerGap()));
+		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(jLabel1).addComponent(jLabel_ID)).addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+						.addComponent(jLabel2).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jTextField_Name, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addGap(18, 18, 18)
+						.addComponent(jLabel3).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(jButton1).addComponent(jButton2)).addContainerGap()));
 	}
 
 }

@@ -3,6 +3,7 @@ package sqlmeter.ui.schedule;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.GroupLayout;
@@ -13,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle;
 import javax.swing.SwingUtilities;
+
 import sqlmeter.SQL;
 import sqlmeter.dotask.JPanelDoTask;
 import sqlmeter.model.Schedule;
@@ -22,10 +24,10 @@ import sqlmeter.model.Task;
  * @author Leonid Ivanov
  */
 public class JPanelSchedules extends javax.swing.JPanel {
-	
+
 	private static final long serialVersionUID = 1L;
-	
-	private JButton jButton1, jButton2, jButton3, jButton4;	
+
+	private JButton jButton1, jButton2, jButton3, jButton4;
 	private JScrollPane jScrollPane1;
 	private JTable table;
 
@@ -55,8 +57,7 @@ public class JPanelSchedules extends javax.swing.JPanel {
 		int row = table.getSelectedRow();
 
 		if (row < 0) {
-			JOptionPane.showMessageDialog(null, "Не выбрана строка для редактирования", "Предупреждение!",
-					JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Не выбрана строка для редактирования", "Предупреждение!", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 
@@ -91,8 +92,7 @@ public class JPanelSchedules extends javax.swing.JPanel {
 		int row = table.getSelectedRow();
 
 		if (row < 0) {
-			JOptionPane.showMessageDialog(null, "Не выбрана строка для удаления!", "Предупреждение!",
-					JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Не выбрана строка для удаления!", "Предупреждение!", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 
@@ -116,19 +116,18 @@ public class JPanelSchedules extends javax.swing.JPanel {
 		Object id_task = table.getValueAt(row, 2);
 		Task task = SQL.getTask(id_task);
 		if (task == null) {
-			JOptionPane.showMessageDialog(null, "Задачи " + id_task + " не найдено!", "Предупреждение!",
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Задачи " + id_task + " не найдено!", "Предупреждение!", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
 		String sql = task.getTask_SQL();
 
 		Schedule sch = new Schedule();
-		sch.setSchd_ID(table.getValueAt(row, 0).toString());
-		sch.setSchd_Name(table.getValueAt(row, 1).toString());
-		sch.setSchd_task_ID(table.getValueAt(row, 2).toString());
-		sch.setSchd_InputParams(table.getValueAt(row, 4).toString());
-		sch.setSchd_StartTime(table.getValueAt(row, 5).toString());
+		sch.setSchd_ID((String) table.getValueAt(row, 0));
+		sch.setSchd_Name((String) table.getValueAt(row, 1));
+		sch.setSchd_task_ID((String) table.getValueAt(row, 2));
+		sch.setSchd_InputParams((String) table.getValueAt(row, 4));
+		sch.setSchd_StartTime((String) table.getValueAt(row, 5));
 
 		Action ac = new RefreshAction();
 		String dialog_name = sch.getSchd_ID() + " ~ " + sch.getSchd_Name();
@@ -195,27 +194,16 @@ public class JPanelSchedules extends javax.swing.JPanel {
 
 		GroupLayout layout = new GroupLayout(this);
 		this.setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup().addContainerGap()
-						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-								.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
-								.addGroup(layout.createSequentialGroup().addComponent(jButton1)
-										.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jButton2)
-										.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jButton3)
-										.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,
-												GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(jButton4)))
+		layout.setHorizontalGroup(
+				layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+						.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE).addGroup(layout.createSequentialGroup().addComponent(jButton1).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jButton2)
+								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jButton3).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(jButton4)))
 						.addContainerGap()));
-		layout.setVerticalGroup(
-				layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(GroupLayout.Alignment.TRAILING,
-						layout.createSequentialGroup().addContainerGap()
-								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-										.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-												.addComponent(jButton2, GroupLayout.Alignment.TRAILING)
-												.addComponent(jButton3).addComponent(jButton1))
-										.addComponent(jButton4))
-								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jScrollPane1)
-								.addContainerGap()));
+		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(GroupLayout.Alignment.TRAILING,
+				layout.createSequentialGroup().addContainerGap()
+						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jButton2, GroupLayout.Alignment.TRAILING).addComponent(jButton3).addComponent(jButton1)).addComponent(jButton4))
+						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jScrollPane1).addContainerGap()));
 	}
 
 }
