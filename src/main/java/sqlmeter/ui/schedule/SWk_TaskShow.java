@@ -153,12 +153,6 @@ public class SWk_TaskShow extends SwingWorker<Void, String> {
 		try (Statement stmt = con.createStatement()) {
 			stmt.execute(sql);
 
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-
 			if (ui.isFinish()) {
 				con.rollback();
 				publish("Операция остановлена.");
