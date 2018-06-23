@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.SwingUtilities;
 
-import sqlmeter.SQL;
+import sqlmeter.Sql;
 import sqlmeter.model.Schedule;
 import sqlmeter.model.Task;
 import sqlmeter.ui.APanelCard;
@@ -166,10 +166,10 @@ public class JPanelScheduleCard extends APanelCard {
 		// если ID отсутствует то добавляем запись
 		if (sch.getSchd_ID().isEmpty()) {
 			sch.setSchd_ID(UUID.randomUUID().toString());
-			isUpdate = SQL.insertSchedule(sch);
+			isUpdate = Sql.insertSchedule(sch);
 		} else {
 			// если есть ID то редактируем
-			isUpdate = SQL.updateSchedule(sch);
+			isUpdate = Sql.updateSchedule(sch);
 		}
 
 		if (isUpdate) {

@@ -18,7 +18,7 @@ import sqlmeter.model.Task;
  * 
  * @author Leonid Ivanov
  */
-public class SQL {
+public class Sql {
 	static String connectionUrl = getConnectionUrl();
 	static final String DB_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
