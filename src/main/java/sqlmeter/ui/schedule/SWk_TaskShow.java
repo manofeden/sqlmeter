@@ -16,7 +16,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import sqlmeter.Sql;
+import sqlmeter.SqlQueries;
 import sqlmeter.dotask.JPanelDoTask;
 import sqlmeter.dotask.Parse;
 import sqlmeter.model.Schedule;
@@ -128,7 +128,7 @@ public class SWk_TaskShow extends SwingWorker<Void, String> {
 	}
 
 	private boolean doCon() {
-		try (Connection con = Sql.getConnection()) {
+		try (Connection con = SqlQueries.getConnection()) {
 			con.setAutoCommit(false);
 			return doSQL(con);
 		} catch (SQLException e) {
@@ -139,7 +139,7 @@ public class SWk_TaskShow extends SwingWorker<Void, String> {
 	}
 
 	private boolean doCon(Properties propConnection) {
-		try (Connection con = Sql.getConnection(propConnection)) {
+		try (Connection con = SqlQueries.getConnection(propConnection)) {
 			con.setAutoCommit(false);
 			return doSQL(con);
 		} catch (SQLException e) {

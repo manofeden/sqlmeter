@@ -15,7 +15,7 @@ import javax.swing.JTable;
 import javax.swing.LayoutStyle;
 import javax.swing.SwingUtilities;
 
-import sqlmeter.Sql;
+import sqlmeter.SqlQueries;
 import sqlmeter.dotask.JPanelDoTask;
 import sqlmeter.model.Schedule;
 import sqlmeter.model.Task;
@@ -62,7 +62,7 @@ public class JPanelSchedules extends javax.swing.JPanel {
 		}
 
 		Object valueAt = table.getValueAt(row, 0);
-		Schedule sch = Sql.getSchedule(valueAt);
+		Schedule sch = SqlQueries.getSchedule(valueAt);
 
 		if (sch == null) {
 			JOptionPane.showMessageDialog(null, "Записи не найдено!", "Предупреждение!", JOptionPane.WARNING_MESSAGE);
@@ -97,7 +97,7 @@ public class JPanelSchedules extends javax.swing.JPanel {
 		}
 
 		Object valueAt = table.getValueAt(row, 0);
-		boolean deleteTask = Sql.deleteSchedule(valueAt);
+		boolean deleteTask = SqlQueries.deleteSchedule(valueAt);
 
 		// если удаление успеншно, то обновляем таблицу задач
 		if (deleteTask) {
@@ -114,7 +114,7 @@ public class JPanelSchedules extends javax.swing.JPanel {
 		}
 
 		Object id_task = table.getValueAt(row, 2);
-		Task task = Sql.getTask(id_task);
+		Task task = SqlQueries.getTask(id_task);
 		if (task == null) {
 			JOptionPane.showMessageDialog(null, "Задачи " + id_task + " не найдено!", "Предупреждение!", JOptionPane.ERROR_MESSAGE);
 			return;
@@ -141,7 +141,7 @@ public class JPanelSchedules extends javax.swing.JPanel {
 		@Override
 		public void actionPerformed(ActionEvent event) {
 			Schedule sch = (Schedule) event.getSource();
-			Sql.updateSchedule(sch);
+			SqlQueries.updateSchedule(sch);
 
 			refresh();
 		}

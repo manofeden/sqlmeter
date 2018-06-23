@@ -10,7 +10,7 @@ import javax.swing.JTable;
 import javax.swing.LayoutStyle;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
-import sqlmeter.Sql;
+import sqlmeter.SqlQueries;
 import sqlmeter.model.Task;
 
 /**
@@ -38,7 +38,7 @@ public class JPanelTasks extends javax.swing.JPanel {
 
 		@Override
 		protected Void doInBackground() throws Exception {
-			result = Sql.selectAllFromTasks();
+			result = SqlQueries.selectAllFromTasks();
 			return null;
 		}
 
@@ -72,7 +72,7 @@ public class JPanelTasks extends javax.swing.JPanel {
 		}
 
 		Object valueAt = table.getValueAt(row, 0);
-		Task task = Sql.getTask(valueAt);
+		Task task = SqlQueries.getTask(valueAt);
 
 		if (task == null) {
 			JOptionPane.showMessageDialog(null, "Записи не найдено!", "Предупреждение!", JOptionPane.WARNING_MESSAGE);
@@ -110,7 +110,7 @@ public class JPanelTasks extends javax.swing.JPanel {
 		}
 
 		Object valueAt = table.getValueAt(row, 0);
-		boolean deleteTask = Sql.deleteTask(valueAt);
+		boolean deleteTask = SqlQueries.deleteTask(valueAt);
 
 		// если удаление успешно, то обновляем таблицу задач
 		if (deleteTask) {

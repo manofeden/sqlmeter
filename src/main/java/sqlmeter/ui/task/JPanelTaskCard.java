@@ -10,7 +10,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
-import sqlmeter.Sql;
+import sqlmeter.SqlQueries;
 import sqlmeter.model.Task;
 import sqlmeter.ui.APanelCard;
 
@@ -63,10 +63,10 @@ public class JPanelTaskCard extends APanelCard {
 	private void save() {
 		Task task = getData();
 		if (!task.getTask_ID().isEmpty()) {
-			isUpdate = Sql.updateTask(task);
+			isUpdate = SqlQueries.updateTask(task);
 		} else {
 			task.setTask_ID(UUID.randomUUID().toString());
-			isUpdate = Sql.insertTask(task);
+			isUpdate = SqlQueries.insertTask(task);
 		}
 
 		if (isUpdate)

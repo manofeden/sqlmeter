@@ -2,7 +2,7 @@ package sqlmeter.ui.schedule;
 
 import java.util.List;
 import javax.swing.SwingWorker;
-import sqlmeter.Sql;
+import sqlmeter.SqlQueries;
 import sqlmeter.model.Task;
 
 /**
@@ -20,7 +20,7 @@ class SWk_ComboSchedule extends SwingWorker<Void, Void>{
 
     @Override
     protected Void doInBackground() throws Exception {
-        listTasks = Sql.selectAllFromTasks();
+        listTasks = SqlQueries.selectAllFromTasks();
         return null;
     }
 
